@@ -84,7 +84,7 @@ def contentline_generator(stream):
         for line in stream:
             linenum = linenum + 1
             if line[-2:] != b'\r\n':
-                raise ValueError('Invalid line ending on line {0}: "{1:.30s}...".'.format(linenum, line))
+                raise ValueError('Invalid line ending on line {0!s:n}: "{1!s:.30s}...".'.format(linenum, line))
             line = line[:-2]
             if not line[:-2]:
                 continue
