@@ -3,7 +3,7 @@
 #----------------------------------------------------------------------------
 """IETF RFC media type objects."""
 
-from .__meta__ import (__version__, __author__, __copyright__, __license__)
+from pyietflib.__meta__ import (__version__, __author__, __copyright__, __license__)
 
 import sys
 if sys.version_info < (3, 2):
