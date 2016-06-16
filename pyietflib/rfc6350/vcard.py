@@ -8,6 +8,7 @@ from ..__meta__ import (__version__, __author__, __copyright__, __license__)
 import sys
 if sys.version_info < (3, 2):
     raise Exception("rfc6350 requires Python 3.2 or higher.")
+import itertools
 import logging
 import re
 import string
@@ -98,8 +99,6 @@ def contentline_generator(stream):
         print(line)
         raise ValueError('Invalid UTF-8 encoded stream on line {0}: "{1:.30s}...".'.format(linenum, line))
 
-
-
 class vCard(dict):
     """Defines a structured vCard in accordance with `RFC 6350: vCard
     Format Specification <http://tools.ietf.org/html/rfc6350>`_
@@ -107,9 +106,45 @@ class vCard(dict):
     """
     def __init__(self, version='4.0'):
         self.version = version
+        self.component_print_order = [
+            'VERSION',
+            'FN', 'N', 'NICKNAME', 'PHOTO', 'BDAY', 'ANNIVERSARY', 'GENDER',
+            'ADR',
+            'TEL', 'EMAIL', 'IMPP', 'LANG',
+            'TZ', 'GEO',
+            'TITLE', 'ROLE', 'LOGO', 'ORG', 'MEMBER', 'RELATED',
+            'CATEGORIES', 'NOTE', 'PRODID', 'REV', 'SOUND', 'UID', 'CLIENTPIDMAP', 'URL',
+            'KEY',
+            'FBURL', 'CALADRURI', 'CALURI',
+            'SOURCE', 'KIND', 'XML',
+        ]
 
     def __str__(self):
-        raise NotImplementedError()
+        """Returns a valid vCard string.
+
+        Properties are ordered according to vCard.component_order
+        """
+
+        # A list of sublists of components of each type
+        components_per_type = map(
+            lambda type: self.get(type, []),
+            self.component_print_order
+        )
+
+        # Treat the list of sublists as one long list of components, and
+        # stringify them. Each component string already ends in a newline.
+        component_strings = map(
+            str,
+            itertools.chain.from_iterable(components_per_type)
+        )
+
+        # Join the newline-terminated component strings
+        vcard_body = ''.join(component_strings)
+
+        return ('BEGIN:VCARD\r\n'
+                'VERSION:{version}\r\n'
+                '{body}'
+                'END:VCARD\r\n').format(version=self.version, body=vcard_body)
 
     def __repr__(self):
         return 'parse_vcard(r"""{0}""")'.format(str(self))
