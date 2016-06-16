@@ -2,8 +2,8 @@
 # -*- coding: UTF-8 -*-
 """`RFC 5646 IANA Language Subtag Registry
 <http://tools.ietf.org/html/rfc5646#section-3>`_ reader."""
-__copyright__ = """Copyright 2011 Lance Finn Helsten (helsten@acm.org)"""
-from .__meta__ import (__version__, __author__, __license__)
+
+from ..__meta__ import (__version__, __author__, __copyright__, __license__)
 
 import sys
 if sys.version_info < (3, 2):

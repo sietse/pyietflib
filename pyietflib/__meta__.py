@@ -1,9 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-"""Project-wide metadata."""
+"""Contains all project-wide metadata."""
 
 __version__ = '1.0'
-__author__ = ('Lance Finn Helsten')
+__author__ = ('Lance Finn Helsten',)
 __copyright__ = """Copyright 2011 Lance Finn Helsten (helsten@acm.org)"""
 __license__ = """
 Licensed under the Apache License, Version 2.0 (the "License");

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """Parser for RFC 5646 Tags for Identifying Languages"""
-__copyright__ = """Copyright 2011 Lance Finn Helsten (helsten@acm.org)"""
-from .__meta__ import (__version__, __author__, __license__)
+
+from ..__meta__ import (__version__, __author__, __copyright__, __license__)
 
 import ply.lex as lex
 

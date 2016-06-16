@@ -3,8 +3,8 @@
 """`RFC 5646 <http://tools.ietf.org/html/rfc5646>`_ Tags for Identifying
 Languages parser.
 """
-__copyright__ = """Copyright 2011 Lance Finn Helsten (helsten@acm.org)"""
-from .__meta__ import (__version__, __author__, __license__)
+
+from ..__meta__ import (__version__, __author__, __copyright__, __license__)
 
 from .languagetag import *
 from .registry import *

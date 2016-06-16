@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """`vCard Property <http://tools.ietf.org/html/rfc6350#section-6>`_"""
-__copyright__ = """Copyright 2011 Lance Finn Helsten (helsten@acm.org)"""
-from .__meta__ import (__version__, __author__, __license__)
+
+from ..__meta__ import (__version__, __author__, __copyright__, __license__)
 
 import sys
 if sys.version_info < (3, 2):

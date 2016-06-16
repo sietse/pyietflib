@@ -4,8 +4,8 @@
 times <http://www.iso.org/iso/catalogue_detail?csnumber=40874>`_ parsing
 and formatting.
 """
-__copyright__ = """Copyright 2011 Lance Finn Helsten (helsten@acm.org)"""
-from .__meta__ import (__version__, __author__, __license__)
+
+from ..__meta__ import (__version__, __author__, __copyright__, __license__)
 
 from .time import *
 from .date import *
