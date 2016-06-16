@@ -54,7 +54,7 @@ class Property():
     def __init__(self, value, group=None, params=None):
         self.__value = value
         self.__group = group
-        self.__parameters = params if not None else []
+        self.__parameters = params if params is not None else []
         self.parse_value(value)
 
     def __str__(self):
